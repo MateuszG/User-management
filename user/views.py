@@ -10,6 +10,8 @@ from django.core.urlresolvers import reverse
 from .models import User
 from django.views import generic
 from django.utils import timezone
+from django.views.generic.edit import FormView
+from .forms import AddUserForm
 
 
 class IndexUsersView(generic.ListView):
@@ -24,18 +26,15 @@ class DetailUserView(generic.DetailView):
     model = User
     template_name = 'user/detail.html'
 
-    def get_queryset(self):
-        """
-        Excludes any questions that aren't published yet.
-        """
-        return User.objects.filter(pub_date__lte=timezone.now())
 
+class AddUserView(FormView):
+    form_class = AddUserForm
+    template_name = 'user/add.html'
+    success_url = '/user/'
 
-class AddUserView(generic.DetailView):
-    pass
-    # model = User
-    # template_name = 'user/results.html'
-
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(self.success_url)
 
 
 class EditUserView(generic.DetailView):

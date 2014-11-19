@@ -1,0 +1,10 @@
+{% load staticfiles %}
+{% if users %}
+    <ul>
+    {% for user in users %}
+        <li><a href="{% url 'user:detail' user.pk %}">{{ user.username }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No users are available.</p>
+{% endif %}

@@ -22,7 +22,7 @@ def my_random_key():
 class User(AbstractBaseUser, PermissionsMixin):
     username = CharField(max_length=20, unique=True)
     email = EmailField(max_length=254, unique=True)
-    birthday = DateField(blank=True, null=True)
+    birthday = DateField(blank=False, null=False)
     number = IntegerField(blank=False, null=True, default=my_random_key)
     is_staff = BooleanField(default=False)
     is_active = BooleanField(default=False)
@@ -38,3 +38,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.email  # pragma: no cover
+
+    def get_year(self):
+        import ipdb; ipdb.set_trace()
+        
+        return self.birthday.year
