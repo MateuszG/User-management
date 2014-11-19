@@ -15,17 +15,17 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='User',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('password', models.CharField(verbose_name='password', max_length=128)),
+                ('id', models.AutoField(primary_key=True, serialize=False, verbose_name='ID', auto_created=True)),
+                ('password', models.CharField(max_length=128, verbose_name='password')),
                 ('last_login', models.DateTimeField(default=django.utils.timezone.now, verbose_name='last login')),
-                ('is_superuser', models.BooleanField(help_text='Designates that this user has all permissions without explicitly assigning them.', default=False, verbose_name='superuser status')),
+                ('is_superuser', models.BooleanField(default=False, verbose_name='superuser status', help_text='Designates that this user has all permissions without explicitly assigning them.')),
                 ('username', models.CharField(unique=True, max_length=20)),
                 ('email', models.EmailField(unique=True, max_length=254)),
                 ('is_staff', models.BooleanField(default=False)),
                 ('is_active', models.BooleanField(default=False)),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now)),
-                ('groups', models.ManyToManyField(blank=True, related_query_name='user', help_text='The groups this user belongs to. A user will get all permissions granted to each of his/her group.', to='auth.Group', related_name='user_set', verbose_name='groups')),
-                ('user_permissions', models.ManyToManyField(blank=True, related_query_name='user', help_text='Specific permissions for this user.', to='auth.Permission', related_name='user_set', verbose_name='user permissions')),
+                ('groups', models.ManyToManyField(to='auth.Group', related_query_name='user', help_text='The groups this user belongs to. A user will get all permissions granted to each of his/her group.', related_name='user_set', blank=True, verbose_name='groups')),
+                ('user_permissions', models.ManyToManyField(to='auth.Permission', related_query_name='user', help_text='Specific permissions for this user.', related_name='user_set', blank=True, verbose_name='user permissions')),
             ],
             options={
                 'abstract': False,

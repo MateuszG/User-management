@@ -15,11 +15,15 @@ from django.contrib.auth.models import(
 )
 
 
+def my_random_key():
+    return randrange(100)
+
+
 class User(AbstractBaseUser, PermissionsMixin):
     username = CharField(max_length=20, unique=True)
     email = EmailField(max_length=254, unique=True)
     birthday = DateField(blank=True, null=True)
-    number = IntegerField(blank=False, null=True, default=randrange(100))
+    number = IntegerField(blank=False, null=True, default=my_random_key)
     is_staff = BooleanField(default=False)
     is_active = BooleanField(default=False)
     date_joined = DateTimeField(default=timezone.now)
