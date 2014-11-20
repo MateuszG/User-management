@@ -31,7 +31,7 @@ class DetailUserView(generic.DetailView):
 class AddUserView(FormView):
     form_class = AddUserForm
     template_name = 'user/add.html'
-    success_url = '/'
+    success_url = reverse_lazy('user:index')
 
     def form_valid(self, form):
         form.save()
@@ -50,4 +50,4 @@ class EditUserView(generic.UpdateView):
 class DeleteUserView(generic.DeleteView):
     model = User
     template_name = 'user/delete.html'
-    success_url = '/'
+    success_url = reverse_lazy('user:index')
