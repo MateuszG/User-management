@@ -12,7 +12,7 @@ git clone https://github.com/MateuszG/django-user-example.git
 Create virtualenv:
 mkvirtualenv --python=/usr/bin/python3 django_python3
 
-use workon
+Use workon
 http://hosseinkaz.blogspot.com/2012/06/how-to-install-virtualenv.html
 or http://virtualenvwrapper.readthedocs.org/en/latest/install.html
 workon django_python3
@@ -20,8 +20,10 @@ workon django_python3
 Install requirements:
 pip install -r requirements.txt
 
-Start app:
+Init DB
 python manage.py syncdb
+
+Start app:
 python manage.py runserver
 
 Tests:
