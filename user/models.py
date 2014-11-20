@@ -40,6 +40,4 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email  # pragma: no cover
 
     def get_year(self):
-        import ipdb; ipdb.set_trace()
-        
         return self.birthday.year

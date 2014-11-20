@@ -1,14 +1,15 @@
 from django import template
-
+from django.utils import timezone
 register = template.Library()
 
 
-@register.filter(name='permission')
-def permission(years):
-    return 'allowed' if years > 13 else 'blocked'
+@register.simple_tag
+def permission(birth_date):
+    diff = timezone.now().year - birth_date
+    return 'allowed' if diff > 13 else 'blocked'
 
 
-@register.filter(name='bizz_fuzz')
+@register.simple_tag
 def bizz_fuzz(number):
     if number % 5 == 0 and number % 3 == 0:
         return 'BizzFuzz'

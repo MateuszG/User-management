@@ -3,14 +3,18 @@
 <table>
   <tr>
     <th>username</th>
-    <th>years</th>
     <th>birthday</th>
+    <th>years</th>
     <th>number</th>
+    <th>biz fuzz</th>
   </tr>
   <tr>
-    <td>{{ user.username }}</td>
-    <td>{{ user.get_year|permission }}</td>
-    <td>{{ user.birthday }}</td>
-    <td>{{ user.number|bizz_fuzz }}</td>
+    <td>{{ object.username }}</td>
+    <td>{{ object.birthday }}</td>
+    <td>{% permission object.get_year %}</td>
+    <td>{{ object.number }}</td>
+    <td>{% bizz_fuzz object.number %}</td>
   </tr>
 </table>
+<a href="{% url 'user:index' %}">Back</a>
+<a href="{% url 'user:delete' pk=object.pk %}">Delete</a>

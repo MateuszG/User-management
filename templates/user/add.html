@@ -1,6 +1,7 @@
 {% load staticfiles %}
 {% load user_extras %}
 
+Birthday format is YYYY-MM-DD
 <form action="" method="post">
     {% csrf_token %}
     {% for field in form %}
@@ -11,3 +12,6 @@
     {% endfor %}
     <input type="submit" value="Submit" />
 </form>
+
+
+<a href="{% url 'user:index' %}">Back</a>

@@ -8,6 +8,7 @@ from django.http import (
 from django.core.urlresolvers import reverse
 
 from .models import User
+from django.core.urlresolvers import reverse_lazy
 from django.views import generic
 from django.utils import timezone
 from django.views.generic.edit import FormView
@@ -30,7 +31,7 @@ class DetailUserView(generic.DetailView):
 class AddUserView(FormView):
     form_class = AddUserForm
     template_name = 'user/add.html'
-    success_url = '/user/'
+    success_url = '/'
 
     def form_valid(self, form):
         form.save()
@@ -42,6 +43,7 @@ class EditUserView(generic.DetailView):
     template_name = 'user/results.html'
 
 
-class DeleteUserView(generic.DetailView):
+class DeleteUserView(generic.DeleteView):
     model = User
-    template_name = 'user/results.html'
+    template_name = 'user/delete.html'
+    success_url = '/'
