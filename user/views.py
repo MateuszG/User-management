@@ -1,18 +1,16 @@
+
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
+from django.utils import timezone
+from django.views import generic
+from django.views.generic.edit import FormView
 from django.shortcuts import (
     render,
     get_object_or_404
 )
-from django.http import (
-    HttpResponseRedirect
-)
-from django.core.urlresolvers import reverse
-
-from .models import User
-from django.core.urlresolvers import reverse_lazy
-from django.views import generic
-from django.utils import timezone
-from django.views.generic.edit import FormView
-from .forms import AddUserForm
+from user.forms import AddUserForm
+from user.models import User
 
 
 class IndexUsersView(generic.ListView):
@@ -20,7 +18,7 @@ class IndexUsersView(generic.ListView):
     context_object_name = 'users'
 
     def get_queryset(self):
-        return User.objects.filter()
+        return User.objects.all()
 
 
 class DetailUserView(generic.DetailView):

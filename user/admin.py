@@ -1,6 +1,5 @@
 from django.contrib.admin import ModelAdmin, site
-
-from .models import User
+from user.models import User
 
 
 class UserAdmin(ModelAdmin):

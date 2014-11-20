@@ -34,10 +34,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['email']
 
     def __str__(self):
-        return self.username  # pragma: no cover
+        return self.username
 
     def get_short_name(self):
-        return self.email  # pragma: no cover
+        return self.email
 
     def get_year(self):
         return self.birthday.year

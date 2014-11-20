@@ -2,6 +2,7 @@
 {% load user_extras %}
 <table>
   <tr>
+    <th>email</th>
     <th>username</th>
     <th>birthday</th>
     <th>years</th>
@@ -9,6 +10,7 @@
     <th>biz fuzz</th>
   </tr>
   <tr>
+    <td>{{ object.email }}</td>
     <td>{{ object.username }}</td>
     <td>{{ object.birthday }}</td>
     <td>{% permission object.get_year %}</td>

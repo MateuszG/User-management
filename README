@@ -13,3 +13,5 @@ $ python manage.py syncdb
 $ python manage.py runserver
 
 working django project in the browser
+
+$ python manage.py test user

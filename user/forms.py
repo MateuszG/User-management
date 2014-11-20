@@ -1,6 +1,6 @@
 from django.forms import ModelForm, DateInput
 from django.contrib.admin import widgets
-from .models import User
+from user.models import User
 
 
 class AddUserForm(ModelForm):
