@@ -1,3 +1,11 @@
+Release Note:
+
+Version 1.0.0
+- Support CVS file download
+- App provides viewing, adding, editing and deleting a single user and
+listing all users
+
+
 Installation instructions:
 git clone https://github.com/MateuszG/django-user-example.git
 
