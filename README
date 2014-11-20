@@ -9,15 +9,24 @@ listing all users
 Installation instructions:
 git clone https://github.com/MateuszG/django-user-example.git
 
-create a virtualenv using workon
+Create virtualenv:
+mkvirtualenv --python=/usr/bin/python3 django_python3
+
+Use workon:
 http://hosseinkaz.blogspot.com/2012/06/how-to-install-virtualenv.html
 or http://virtualenvwrapper.readthedocs.org/en/latest/install.html
-mkvirtualenv --python=/usr/bin/python3 django_python3
 workon django_python3
 
+Enter project:
+cd django-user-example/
+
+Install requirements:
 pip install -r requirements.txt
 
+Init DB:
 python manage.py syncdb
+
+Start app:
 python manage.py runserver
 
 Tests:
