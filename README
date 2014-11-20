@@ -1,7 +1,7 @@
 Release Note:
 
 Version 1.0.0
-- Support CVS file download
+- Support for download CVS file with all users
 - App provides viewing, adding, editing and deleting a single user and
 listing all users
 
