@@ -1,17 +1,16 @@
-git clone from github ( or other free git repository ) ( you should provide url address )
+Installation instructions:
+git clone https://github.com/MateuszG/django-user-example.git
 
 create a virtualenv using workon
 http://hosseinkaz.blogspot.com/2012/06/how-to-install-virtualenv.html
 or http://virtualenvwrapper.readthedocs.org/en/latest/install.html
-$ mkvirtualenv --python=/usr/bin/python3 django_python3
-$ workon django_python3
+mkvirtualenv --python=/usr/bin/python3 django_python3
+workon django_python3
 
-$ pip install requirements.txt
+pip install -r requirements.txt
 
-$ python manage.py syncdb
+python manage.py syncdb
+python manage.py runserver
 
-$ python manage.py runserver
-
-working django project in the browser
-
+Tests:
 $ python manage.py test user
