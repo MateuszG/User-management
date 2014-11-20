@@ -18,7 +18,7 @@ or http://virtualenvwrapper.readthedocs.org/en/latest/install.html
 workon django_python3
 
 Install requirements:
-pip install -r requirements.txt
+pip install -r django-user-example/requirements.txt
 
 Init DB:
 python manage.py syncdb
