@@ -38,9 +38,13 @@ class AddUserView(FormView):
         return HttpResponseRedirect(self.success_url)
 
 
-class EditUserView(generic.DetailView):
+class EditUserView(generic.UpdateView):
     model = User
-    template_name = 'user/results.html'
+    template_name = 'user/edit.html'
+    fields = ['username', 'email', 'password', 'birthday']
+
+    def get_success_url(self):
+        return reverse_lazy('user:detail', args=(self.object.pk,))
 
 
 class DeleteUserView(generic.DeleteView):
