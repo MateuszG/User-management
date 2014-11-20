@@ -13,4 +13,4 @@ python manage.py syncdb
 python manage.py runserver
 
 Tests:
-$ python manage.py test user
+python manage.py test user

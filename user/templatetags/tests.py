@@ -11,3 +11,4 @@ class TagsTests(TestCase):
         self.assertEqual(bizz_fuzz(15), 'BizzFuzz' )
         self.assertEqual(bizz_fuzz(5), 'Fuzz' )
         self.assertEqual(bizz_fuzz(3), 'Bizz' )
+        self.assertEqual(bizz_fuzz(4), 4)

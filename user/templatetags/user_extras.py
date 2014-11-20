@@ -19,3 +19,5 @@ def bizz_fuzz(number):
 
     elif number % 5 == 0:
         return 'Fuzz'
+    else:
+        return number

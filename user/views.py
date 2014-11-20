@@ -1,5 +1,9 @@
+import csv
 
-from django.http import HttpResponseRedirect
+from django.http import (
+    HttpResponseRedirect,
+    HttpResponse
+)
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
 from django.utils import timezone
@@ -11,6 +15,10 @@ from django.shortcuts import (
 )
 from user.forms import AddUserForm
 from user.models import User
+from user.templatetags.user_extras import (
+    permission,
+    bizz_fuzz
+)
 
 
 class IndexUsersView(generic.ListView):
@@ -18,7 +26,7 @@ class IndexUsersView(generic.ListView):
     context_object_name = 'users'
 
     def get_queryset(self):
-        return User.objects.all()
+        return User.objects.filter(is_staff=False)
 
 
 class DetailUserView(generic.DetailView):
@@ -49,3 +57,22 @@ class DeleteUserView(generic.DeleteView):
     model = User
     template_name = 'user/delete.html'
     success_url = reverse_lazy('user:index')
+
+
+def generate_cvs(request):
+    all_users = User.objects.filter(is_staff=False)
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(
+        ['Username', 'Birthday', 'Eligible', 'Random Number', 'BizzFuzz'])
+
+    for user in all_users:
+        eligible = permission(user.get_year())
+        bizzfuzz = bizz_fuzz(user.number)
+        writer.writerow(
+            [user.username, user.birthday, eligible, user.number, bizzfuzz]
+        )
+
+    return response

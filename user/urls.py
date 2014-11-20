@@ -9,5 +9,6 @@ urlpatterns = patterns('user',
     url(r'^(?P<pk>\d+)/edit$', views.EditUserView.as_view(), name='edit'),
     url(r'^(?P<pk>\d+)/delete$', views.DeleteUserView.as_view(),
         name='delete'),
+    url(r'^cvs/$', views.generate_cvs, name='cvs'),
 
 )
